@@ -18,7 +18,7 @@ a {
 }
 
 img {
-    max-width: 100%;
+    max-width: 60%;
     display: block;
 }
 
@@ -32,7 +32,7 @@ nav {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
 }
 
 .logo {

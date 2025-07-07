@@ -7,84 +7,102 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav id="desktop-nav">
-        <div class="logo">Mensah Anni</div>
-        <div>
+    <!-- ======= NAVIGATION ======= -->
+    <header>
+        <nav id="desktop-nav" aria-label="Main Navigation">
+            <div class="logo">Mensah Anni</div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contacts">Contact</a></li>
             </ul>
-        </div>
-    </nav>
-    <nav id="hamburger-nav">
-        <div class="logo">Mensah Anni</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+        </nav>
+        <nav id="hamburger-nav" aria-label="Mobile Navigation">
+            <div class="logo">Mensah Anni</div>
+            <div class="hamburger-menu">
+                <button class="hamburger-icon" aria-label="Menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="menu-links" style="display:none;">
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#contacts" onclick="toggleMenu()">Contact</a></li>
+                </ul>
             </div>
-            <ul class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#contacts" onclick="toggleMenu()">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <section id="profile">
-        <div class="section_pic-container">
-            <img src="Profile.pic1.png" alt="Mensah Anni profile picture"/>
-        </div>
-        <div class="section_text">
-            <p class="section_text_p1">Hello I'm </p>
-            <p class="section_text_p2">Mensah Anni</p>
-            <p class="section_text_p3">Fullstack Developer</p>
-            <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Download CV</button>
-                <button class="btn btn-color-1" onclick="location.href='#contacts'">Contact Info</button>
+    <!-- ======= HERO / PROFILE SECTION ======= -->
+    <main>
+        <section id="profile" aria-label="Profile Overview">
+            <div class="section_pic-container">
+                <img src="Profile.pic1.png" alt="Mensah Anni profile picture"/>
             </div>
-            <div id="socials-container">
-                <img src="linkedin.png" alt="My Linkedin Profile" class="icon" onclick="location.href='https://linkedin.com'"/>
-                <img src="github.png" alt="My Github Profile" class="icon" onclick="location.href='https://github.com'"/>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <p class="section_text_p1">Know me more.</p>
-        <h1 class="title">About Me</h1>
-        <div class="section_pic-container">
-            <img src="profile.pic2.png" alt="Profile Picture" class="about-ppic">
-        </div>      
-        <div class="about-details-container">
-            <div class="about-container">
-                <div class="details-container">
-                    <img src="experience.png" alt="Experience Icon" class="icon">
-                    <h3>Experience</h3>
-                    <p>1 year <br/>Front End Developer</p>
+            <div class="section_text">
+                <p class="section_text_p1">Hello I'm</p>
+                <h1 class="section_text_p2">Mensah Anni</h1>
+                <p class="section_text_p3">Fullstack Developer</p>
+                <div class="btn-container">
+                    <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Download CV</button>
+                    <button class="btn btn-color-1" onclick="location.href='#contacts'">Contact Info</button>
                 </div>
-                <div class="details-container">
-                    <img src="education.png" alt="Education Icon" class="icon">
-                    <h3>Education</h3>
-                    <p>BSc Information Technology</p>
+                <div id="socials-container">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener">
+                        <img src="linkedin.png" alt="LinkedIn Profile" class="icon"/>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener">
+                        <img src="github.png" alt="GitHub Profile" class="icon"/>
+                    </a>
                 </div>
             </div>
-            <div class="text-container">
-                <p>I am very fluent in Python, JavaScript, and C++ for solving problems. I started my education in...
-                     <br/> ...</p>
-            </div>
-        </div> 
-        <img src="about-pic.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#projects'" />
-    </section>
+        </section>
 
+        <!-- ======= ABOUT SECTION ======= -->
+        <section id="about" aria-label="About Me">
+            <p class="section_text_p1">Know me more.</p>
+            <h2 class="title">About Me</h2>
+            <div class="about-content">
+                <div class="section_pic-container">
+                    <img src="profile.pic2.png" alt="Profile Picture" class="about-ppic">
+                </div>
+                <div class="about-details-container">
+                    <div class="about-container">
+                        <div class="details-container">
+                            <img src="experience.png" alt="Experience Icon" class="icon">
+                            <h3>Experience</h3>
+                            <p>1 year<br>Front End Developer</p>
+                        </div>
+                        <div class="details-container">
+                            <img src="education.png" alt="Education Icon" class="icon">
+                            <h3>Education</h3>
+                            <p>BSc Information Technology</p>
+                        </div>
+                    </div>
+                    <div class="text-container">
+                        <p>
+                            I am very fluent in Python, JavaScript, and C++ for solving problems. I started my education in...
+                            <br> ...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <button class="icon arrow" onclick="location.href='#projects'" aria-label="Go to Projects">
+                <img src="about-pic.png" alt="Arrow icon" />
+            </button>
+        </section>
+    </main>
+
+    <!-- ======= SCRIPTS ======= -->
     <script>
         function toggleMenu() {
             const menuLinks = document.querySelector('.menu-links');
-            menuLinks.style.display = menuLinks.style.display === 'block' ? 'none' : 'block';
+            if(menuLinks){
+                menuLinks.style.display = menuLinks.style.display === 'block' ? 'none' : 'block';
+            }
         }
     </script>
 </body>

@@ -1,0 +1,9 @@
+/* Debug stylesheet — does not use Tailwind or PostCSS. */
+/* If this is loaded, you'll see a magenta outline around the page. */
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  outline: 6px dashed magenta !important;
+}

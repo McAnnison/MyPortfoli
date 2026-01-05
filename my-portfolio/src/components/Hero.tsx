@@ -19,7 +19,7 @@ export function Hero() {
     }, 100);
     
     return () => clearInterval(timer);
-  }, []);
+  }, [fullText]);
 
   const socialIconVariants = {
     hidden: { opacity: 0, y: 20 },

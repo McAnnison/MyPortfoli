@@ -21,12 +21,7 @@ export default function App() {
         <Footer />
       </div>
       <Toaster />
-      {/* Visual verification block (remove later if not needed) */}
-      <div className="fixed bottom-4 right-4 flex gap-2">
-        <button className="rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm shadow hover:bg-primary/90 transition">Primary</button>
-        <button className="rounded-md bg-secondary text-secondary-foreground px-4 py-2 text-sm shadow hover:bg-secondary/90 transition">Secondary</button>
-        <button className="rounded-md bg-accent text-accent-foreground px-4 py-2 text-sm shadow hover:bg-accent/90 transition">Accent</button>
-      </div>
+  
     </div>
   );
 }

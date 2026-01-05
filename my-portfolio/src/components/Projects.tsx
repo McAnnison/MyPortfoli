@@ -41,43 +41,106 @@ const projects = [
 ];
 
 export function Projects() {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, rotateX: -15 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        ease: [0.43, 0.13, 0.23, 0.96] as const
+      }
+    })
+  };
+
   return (
     <section className="py-20 bg-slate-900" id="projects">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-white mb-4">Featured Projects</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <motion.h2 
+            className="text-white mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Featured Projects
+          </motion.h2>
+          <motion.p 
+            className="text-slate-400 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             A selection of projects that showcase my skills and experience
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={cardVariants}
+              whileHover={{ 
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
             >
-              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden hover:border-slate-600 transition-colors h-full flex flex-col">
+              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden hover:border-slate-600 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 h-full flex flex-col group">
                 <div className="relative h-48 overflow-hidden">
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-white mb-3">{project.title}</h3>
-                  <p className="text-slate-400 text-sm mb-4 flex-1">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <motion.h3 
+                    className="text-white mb-3"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 + 0.3 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-slate-400 text-sm mb-4 flex-1"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 + 0.4 }}
+                  >
+                    {project.description}
+                  </motion.p>
+                  <motion.div 
+                    className="flex flex-wrap gap-2 mb-4"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 + 0.5 }}
+                  >
                     {project.tags.map((tag, tagIndex) => (
                       <Badge
                         key={tagIndex}
@@ -87,30 +150,48 @@ export function Projects() {
                         {tag}
                       </Badge>
                     ))}
-                  </div>
-                  <div className="flex gap-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-slate-600 text-slate-300 hover:bg-slate-700 flex-1"
-                      asChild
+                  </motion.div>
+                  <motion.div 
+                    className="flex gap-3"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 + 0.6 }}
+                  >
+                    <motion.div
+                      className="flex-1"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 flex-1"
-                      asChild
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-slate-600 text-slate-300 hover:bg-slate-700 w-full"
+                        asChild
+                      >
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 mr-2" />
+                          Code
+                        </a>
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      className="flex-1"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Demo
-                      </a>
-                    </Button>
-                  </div>
+                      <Button
+                        size="sm"
+                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 w-full"
+                        asChild
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Demo
+                        </a>
+                      </Button>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </Card>
             </motion.div>

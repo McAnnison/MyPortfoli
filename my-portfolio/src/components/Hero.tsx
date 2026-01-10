@@ -3,6 +3,8 @@ import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { useEffect, useState } from 'react';
 
+import avatarSrc from '../image.png';
+
 const AVATAR_ALT = 'Portrait photo of Mensah Anni';
 
 export function Hero() {
@@ -158,7 +160,7 @@ export function Hero() {
               <div className="avatar">
                 <img
                   className="avatar-img"
-                  src="src/image.png"
+                  src={avatarSrc}
                   alt={AVATAR_ALT}
                   decoding="async"
                   fetchPriority="high"

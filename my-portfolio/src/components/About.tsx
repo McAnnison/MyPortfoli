@@ -87,7 +87,7 @@ export function About() {
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0.2 }}
 					>
-						I'm a passionate full stack developer with 5+ years of experience
+						I'm a passionate full stack developer with 1+ years of experience
 						building web applications. I love turning complex problems into
 						simple, beautiful, and intuitive solutions.
 					</motion.p>

@@ -3,8 +3,7 @@ import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { useEffect, useState } from 'react';
 
-// Accessible alt text for avatar emoji
-const AVATAR_LABEL = 'Developer avatar';
+const AVATAR_ALT = 'Portrait photo of Mensah Anni';
 
 export function Hero() {
   const [text, setText] = useState('');
@@ -157,9 +156,13 @@ export function Hero() {
           >
             <div className="avatar-ring">
               <div className="avatar">
-                <span role="img" aria-label={AVATAR_LABEL} className="avatar-emoji">
-                  👨‍💻
-                </span>
+                <img
+                  className="avatar-img"
+                  src="src/image.png"
+                  alt={AVATAR_ALT}
+                  decoding="async"
+                  fetchPriority="high"
+                />
               </div>
             </div>
           </motion.div>

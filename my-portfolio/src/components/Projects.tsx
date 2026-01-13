@@ -7,45 +7,36 @@ import { ImageWithFallback } from './figma/image';
 
 const projects = [
 	{
-		title: 'E-Commerce Platform',
+		title: 'Big Dot',
 		description:
-			'A full-featured online shopping platform with payment integration, inventory management, and admin dashboard.',
+			'A frontend task I worked on with a colleague Kekeli at Revolve DigiCom.',
 		image:
 			'https://images.unsplash.com/photo-1727407209320-1fa6ae60ee05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZ3xlbnwxfHx8fDE3NjI3MDgzMjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-		tags: ['React', 'Node.js', 'Stripe', 'MongoDB'],
-		github: 'https://github.com',
-		demo: 'https://example.com',
+		tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+		github: 'https://github.com/McAnnison/revolve-web',
+		demo: 'https://mcannison.github.io/revolve-web/',
 	},
 	{
-		title: 'Analytics Dashboard',
+		title: 'Cost Calculator',
 		description:
-			'Real-time analytics dashboard with interactive charts, data visualization, and customizable reporting.',
+			'This is also another task I received at Revolve DigiCom to test my knowledge in backend development. A modern web application for calculating cleaning service costs with an intuitive interface and comprehensive pricing options.',
 		image:
 			'https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzYyNjc0MDMzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
 		tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Recharts'],
-		github: 'https://github.com',
-		demo: 'https://example.com',
+		github: 'https://github.com/McAnnison/cost-check',
+		demo: 'https://clening-cost-calculator-9up5g1suv-mcannisons-projects.vercel.app/',
 	},
 	{
-		title: 'Mobile App Backend',
+		title: 'Artisan Finder App',
 		description:
-			'Scalable REST API for a mobile application with authentication, real-time notifications, and cloud storage.',
+			'An Artisan Marketplace & Locator App that connects skilled local artisans (masons, carpenters, plumbers, painters, electricians, welders, tilers, etc.) with people who need work done, fast and reliably.',
 		image:
 			'https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzYyNjk0ODE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
 		tags: ['Express', 'GraphQL', 'Redis', 'AWS'],
-		github: 'https://github.com',
-		demo: 'https://example.com',
+		github: 'https://github.com/McAnnison/WorkManGH',
+		demo: 'https://crave-pulse-81327893.figma.site/',
 	},
-	{
-		title: 'Developer Portfolio',
-		description:
-			'Modern portfolio website with blog integration, project showcase, and contact management system.',
-		image:
-			'https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWIlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3NjI2MjYyOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-		tags: ['React', 'Tailwind', 'Framer Motion', 'Supabase'],
-		github: 'https://github.com',
-		demo: 'https://example.com',
-	},
+
 ];
 
 export function Projects() {

@@ -9,7 +9,6 @@ const skillCategories = [
 			'Next.js',
 			'TypeScript',
 			'Tailwind CSS',
-			'Vue.js',
 			'HTML/CSS',
 		],
 	},
@@ -18,10 +17,7 @@ const skillCategories = [
 		skills: [
 			'Node.js',
 			'Express',
-			'Python',
-			'Django',
 			'REST APIs',
-			'GraphQL',
 		],
 	},
 	{
@@ -30,14 +26,13 @@ const skillCategories = [
 			'PostgreSQL',
 			'MongoDB',
 			'Redis',
-			'MySQL',
 			'Prisma',
 			'Supabase',
 		],
 	},
 	{
 		category: 'Tools & Others',
-		skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Jest', 'Figma'],
+		skills: ['Git', 'Figma'],
 	},
 ];
 

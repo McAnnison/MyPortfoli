@@ -5,13 +5,16 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { ImageWithFallback } from './figma/image';
 
+import bigDotImage from '../assets/bigdot.png';
+import artisanFinderImage from '../assets/artisan-finder.png';
+import costCalculatorImage from '../assets/costcheck.png';
+
 const projects = [
 	{
 		title: 'Big Dot',
 		description:
 			'A frontend task I worked on with a colleague Kekeli at Revolve DigiCom.',
-		image:
-			'https://images.unsplash.com/photo-1727407209320-1fa6ae60ee05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBzaG9wcGluZ3xlbnwxfHx8fDE3NjI3MDgzMjZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+		image: bigDotImage,
 		tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
 		github: 'https://github.com/McAnnison/revolve-web',
 		demo: 'https://mcannison.github.io/revolve-web/',
@@ -20,19 +23,17 @@ const projects = [
 		title: 'Cost Calculator',
 		description:
 			'This is also another task I received at Revolve DigiCom to test my knowledge in backend development. A modern web application for calculating cleaning service costs with an intuitive interface and comprehensive pricing options.',
-		image:
-			'https://images.unsplash.com/photo-1608222351212-18fe0ec7b13b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzYyNjc0MDMzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-		tags: ['Next.js', 'TypeScript', 'PostgreSQL', 'Recharts'],
+		image: costCalculatorImage,
+		tags: ['Next.js', 'TypeScript', 'Node.js', 'Express', 'CSS Modules'],
 		github: 'https://github.com/McAnnison/cost-check',
-		demo: 'https://clening-cost-calculator-9up5g1suv-mcannisons-projects.vercel.app/',
+		demo: 'https://cost-check-xi.vercel.app/',
 	},
 	{
 		title: 'Artisan Finder App',
 		description:
 			'An Artisan Marketplace & Locator App that connects skilled local artisans (masons, carpenters, plumbers, painters, electricians, welders, tilers, etc.) with people who need work done, fast and reliably.',
-		image:
-			'https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzYyNjk0ODE0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-		tags: ['Express', 'GraphQL', 'Redis', 'AWS'],
+		image: artisanFinderImage,
+		tags: ['Figma', 'React Native', 'Expo', 'Node', 'Express', 'PostgreSQL'],
 		github: 'https://github.com/McAnnison/WorkManGH',
 		demo: 'https://crave-pulse-81327893.figma.site/',
 	},

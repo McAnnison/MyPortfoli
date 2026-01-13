@@ -103,7 +103,7 @@ export function Hero() {
               transition={{ delay: 0.25, duration: 0.6 }}
               className="hero-subtitle"
             >
-              Full Stack Developer
+              Full Stack Developer but still learning...
             </motion.p>
 
             <motion.p
@@ -137,16 +137,15 @@ export function Hero() {
               transition={{ delay: 0.55, duration: 0.6 }}
               className="social-links"
             >
-              <SocialLink href="https://github.com" label="GitHub">
+              <SocialLink href="https://github.com/McAnnison" label="GitHub">
                 <Github />
               </SocialLink>
               <SocialLink href="https://linkedin.com" label="LinkedIn">
                 <Linkedin />
               </SocialLink>
-              <SocialLink href="mailto:mensah.anni@example.com" label="Email">
+              <SocialLink href="mailto:mensahanni98@gmail.com" label="Email">
                 <Mail />
-              </SocialLink>
-            </motion.nav>
+              </SocialLink>            </motion.nav>
           </div>
 
           {/* Right: Avatar */}
@@ -181,7 +180,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="social-row-lg" aria-hidden>
-          {[ { href: "https://github.com", icon: Github, label: "GitHub" }, { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" }, { href: "mailto:mensah.anni@example.com", icon: Mail, label: "Email" } ].map((social, i) => (
+          {[ { href: "https://github.com/McAnnison", icon: Github, label: "GitHub" }, { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" }, { href: "mailto:mensah.anni@example.com", icon: Mail, label: "Email" } ].map((social, i) => (
             <motion.a
               key={social.label}
               href={social.href}

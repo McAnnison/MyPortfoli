@@ -12,7 +12,7 @@ export function Footer() {
 
           <div className="footer-socials" role="navigation" aria-label="Social links">
             <a
-              href="https://github.com"
+              href="https://github.com/McAnnison"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
@@ -28,7 +28,7 @@ export function Footer() {
               <Linkedin className="social-icon" aria-hidden />
             </a>
             <a
-              href="mailto:mensah.anni@example.com"
+              href="mailto:mensahanni98@gmail.com"
               className="social-link"
             >
               <Mail className="social-icon" aria-hidden />

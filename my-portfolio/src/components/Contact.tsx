@@ -30,12 +30,19 @@ const contactInfo = [
 
 export function Contact() {
 	const [focusedField, setFocusedField] = useState<string | null>(null);
+	const [formValues, setFormValues] = useState({
+		name: '',
+		email: '',
+		subject: '',
+		message: '',
+	});
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		toast.success('Message sent successfully!', {
 			description: "Thank you for reaching out. I'll get back to you soon.",
 		});
+		setFormValues({ name: '', email: '', subject: '', message: '' });
 	};
 
 	const contactCardVariants = {
@@ -134,7 +141,23 @@ export function Contact() {
 						transition={{ duration: 0.6 }}
 						className="contact-column"
 					>
-						<h3 className="contact-section-title">Contact Information</h3>
+						<div className="contact-subsection">
+							<h3 className="contact-section-title">Contact Information</h3>
+							<p className="contact-subtitle">
+								Prefer email? Phone? Either works—pick what’s easiest.
+							</p>
+						</div>
+
+						<div className="contact-actions" aria-label="Quick contact actions">
+							<Button asChild className="btn btn-primary">
+								<a href="mailto:mensahanni98@gmail.com">Email me</a>
+							</Button>
+							<Button asChild variant="outline" className="btn btn-outline">
+								<a href="tel:+233206837999">Call</a>
+							</Button>
+						</div>
+						<p className="contact-note">Typical reply time: within 24–48 hours.</p>
+
 						<div className="contact-info-list">
 							{contactInfo.map((info, index) => (
 								<motion.div
@@ -186,6 +209,13 @@ export function Contact() {
 						className="contact-column"
 					>
 						<Card className="contact-card contact-form-card">
+							<div className="contact-subsection">
+								<h3 className="contact-section-title">Send a message</h3>
+								<p className="contact-subtitle">
+									Share a bit about what you’re building and what you need help with.
+								</p>
+							</div>
+
 							<form onSubmit={handleSubmit} className="contact-form">
 								<motion.div
 									initial={{ opacity: 0, y: 10 }}
@@ -211,6 +241,10 @@ export function Contact() {
 											placeholder="Your name"
 											className="input-default"
 											required
+											value={formValues.name}
+											onChange={(e) =>
+												setFormValues((v) => ({ ...v, name: e.target.value }))
+											}
 											onFocus={() => setFocusedField('name')}
 											onBlur={() => setFocusedField(null)}
 										/>
@@ -242,6 +276,10 @@ export function Contact() {
 											placeholder="your.email@example.com"
 											className="input-default"
 											required
+											value={formValues.email}
+											onChange={(e) =>
+												setFormValues((v) => ({ ...v, email: e.target.value }))
+											}
 											onFocus={() => setFocusedField('email')}
 											onBlur={() => setFocusedField(null)}
 										/>
@@ -272,6 +310,10 @@ export function Contact() {
 											placeholder="Project inquiry"
 											className="input-default"
 											required
+											value={formValues.subject}
+											onChange={(e) =>
+												setFormValues((v) => ({ ...v, subject: e.target.value }))
+											}
 											onFocus={() => setFocusedField('subject')}
 											onBlur={() => setFocusedField(null)}
 										/>
@@ -303,6 +345,10 @@ export function Contact() {
 											rows={5}
 											className="input-default textarea-default"
 											required
+											value={formValues.message}
+											onChange={(e) =>
+												setFormValues((v) => ({ ...v, message: e.target.value }))
+											}
 											onFocus={() => setFocusedField('message')}
 											onBlur={() => setFocusedField(null)}
 										/>

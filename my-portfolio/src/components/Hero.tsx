@@ -180,7 +180,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="social-row-lg" aria-hidden>
-          {[ { href: "https://github.com/McAnnison", icon: Github, label: "GitHub" }, { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" }, { href: "mailto:mensah.anni@example.com", icon: Mail, label: "Email" } ].map((social, i) => (
+            {[ { href: "https://github.com/McAnnison", icon: Github, label: "GitHub" }, { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" }, { href: "mailto:mensahanni98@gmail.com", icon: Mail, label: "Email" } ].map((social, i) => (
             <motion.a
               key={social.label}
               href={social.href}

@@ -30,6 +30,7 @@ const contactInfo = [
 
 export function Contact() {
 	const [focusedField, setFocusedField] = useState<string | null>(null);
+
 	const [formValues, setFormValues] = useState({
 		name: '',
 		email: '',

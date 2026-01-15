@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, Download } from 'lucide-react';
 import { Button } from './ui/button';
 import { useEffect, useState } from 'react';
 
 import avatarSrc from '../image.png';
 
 const AVATAR_ALT = 'Portrait photo of Mensah Anni';
+const CV_HREF = '/cv.pdf';
+const CV_DOWNLOAD_NAME = 'Mensah-Anni-CV.pdf';
 
 export function Hero() {
   const [text, setText] = useState('');
@@ -128,6 +130,18 @@ export function Hero() {
               >
                 View My Work
               </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="btn btn-outline"
+              >
+                <a href={CV_HREF} download={CV_DOWNLOAD_NAME} aria-label="Download CV">
+                  <Download />
+                  <span>Download CV</span>
+                </a>
+              </Button>
             </motion.div>
 
             <motion.nav
@@ -176,6 +190,13 @@ export function Hero() {
           </Button>
           <Button variant="outline" size="lg" className="btn btn-outline" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Contact Me
+          </Button>
+
+          <Button asChild variant="outline" size="lg" className="btn btn-outline">
+            <a href={CV_HREF} download={CV_DOWNLOAD_NAME} aria-label="Download CV">
+              <Download />
+              <span>CV</span>
+            </a>
           </Button>
         </motion.div>
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import avatarSrc from '../image.png';
 
 const AVATAR_ALT = 'Portrait photo of Mensah Anni';
-const CV_HREF = 'assets/Mensah-Anni_CV.pdf';
+const CV_HREF = '../assets/Mensah Kwame Anni_CV.pdf';
 const CV_DOWNLOAD_NAME = 'Mensah-Anni_CV.pdf';
 
 export function Hero() {

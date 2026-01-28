@@ -6,6 +6,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { LazyMount } from './LazyMount';
 
 const contactInfo = [
 	{
@@ -76,36 +77,47 @@ export function Contact() {
 
 	return (
 		<section className="contact-section" id="contact">
-			<div className="contact-bg" aria-hidden>
-				<motion.div
-					className="contact-bg-orb contact-bg-orb-blue"
-					animate={{
-						x: [0, 100, 0],
-						y: [0, -50, 0],
-					}}
-					transition={{
-						duration: 20,
-						repeat: Infinity,
-						ease: 'linear',
-					}}
-					style={{ top: '20%', left: '10%' }}
-				/>
-				<motion.div
-					className="contact-bg-orb contact-bg-orb-purple"
-					animate={{
-						x: [0, -100, 0],
-						y: [0, 50, 0],
-					}}
-					transition={{
-						duration: 25,
-						repeat: Infinity,
-						ease: 'linear',
-					}}
-					style={{ bottom: '20%', right: '10%' }}
-				/>
-			</div>
+			<LazyMount
+				minHeight={720}
+				placeholder={
+					<div className="container contact-inner">
+						<div className="contact-header">
+							<h2 className="contact-title">Get In Touch</h2>
+							<p className="contact-lead">Loading contact section…</p>
+						</div>
+					</div>
+				}
+			>
+				<div className="contact-bg" aria-hidden>
+					<motion.div
+						className="contact-bg-orb contact-bg-orb-blue"
+						animate={{
+							x: [0, 100, 0],
+							y: [0, -50, 0],
+						}}
+						transition={{
+							duration: 20,
+							repeat: Infinity,
+							ease: 'linear',
+						}}
+						style={{ top: '20%', left: '10%' }}
+					/>
+					<motion.div
+						className="contact-bg-orb contact-bg-orb-purple"
+						animate={{
+							x: [0, -100, 0],
+							y: [0, 50, 0],
+						}}
+						transition={{
+							duration: 25,
+							repeat: Infinity,
+							ease: 'linear',
+						}}
+						style={{ bottom: '20%', right: '10%' }}
+					/>
+				</div>
 
-			<div className="container contact-inner">
+				<div className="container contact-inner">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -376,7 +388,8 @@ export function Contact() {
 						</Card>
 					</motion.div>
 				</div>
-			</div>
+				</div>
+			</LazyMount>
 		</section>
 	);
 }

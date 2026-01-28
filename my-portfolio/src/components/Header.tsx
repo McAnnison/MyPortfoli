@@ -72,16 +72,6 @@ export function Header() {
 					<div className="header-actions">
 						<Button
 							asChild
-							variant="outline"
-							className="hidden md:inline-flex"
-						>
-							<a href="/cv.pdf" download="Mensah-Kwame-Anni-CV.pdf">
-								Download CV
-							</a>
-						</Button>
-
-						<Button
-							asChild
 							className="hidden md:inline-flex"
 						>
 							<a

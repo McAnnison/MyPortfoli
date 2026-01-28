@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Copy, Mail, MapPin, Phone } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -8,18 +8,22 @@ import { toast } from 'sonner';
 import { useState } from 'react';
 import { LazyMount } from './LazyMount';
 
+const CONTACT_EMAIL = 'mensahanni98@gmail.com';
+const CONTACT_PHONE = '+233 206 837 999';
+const CONTACT_PHONE_TEL = '+233206837999';
+
 const contactInfo = [
 	{
 		icon: Mail,
 		title: 'Email',
-		value: 'mensahanni98@gmail.com',
-		href: 'mailto:mensahanni98@gmail.com',
+		value: CONTACT_EMAIL,
+		href: `mailto:${CONTACT_EMAIL}`,
 	},
 	{
 		icon: Phone,
 		title: 'Phone',
-		value: '+233 206 837 999',
-		href: 'tel:+233206837999',
+		value: CONTACT_PHONE,
+		href: `tel:${CONTACT_PHONE_TEL}`,
 	},
 	{
 		icon: MapPin,
@@ -31,6 +35,7 @@ const contactInfo = [
 
 export function Contact() {
 	const [focusedField, setFocusedField] = useState<string | null>(null);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const [formValues, setFormValues] = useState({
 		name: '',
@@ -39,12 +44,53 @@ export function Contact() {
 		message: '',
 	});
 
+	const isValidEmail = (value: string) =>
+		/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+
+	const copyEmail = async () => {
+		try {
+			if (!navigator.clipboard?.writeText) {
+				toast.error('Copy not supported in this browser.');
+				return;
+			}
+			await navigator.clipboard.writeText(CONTACT_EMAIL);
+			toast.success('Email copied!', { description: CONTACT_EMAIL });
+		} catch {
+			toast.error('Could not copy email.');
+		}
+	};
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		toast.success('Message sent successfully!', {
-			description: "Thank you for reaching out. I'll get back to you soon.",
-		});
-		setFormValues({ name: '', email: '', subject: '', message: '' });
+
+		const name = formValues.name.trim();
+		const email = formValues.email.trim();
+		const subject = formValues.subject.trim();
+		const message = formValues.message.trim();
+
+		if (!name || !email || !subject || !message) {
+			toast.error('Please fill in all fields.');
+			return;
+		}
+		if (!isValidEmail(email)) {
+			toast.error('Please enter a valid email address.');
+			return;
+		}
+
+		setIsSubmitting(true);
+		try {
+			const mailtoSubject = encodeURIComponent(`[Portfolio] ${subject}`);
+			const mailtoBody = encodeURIComponent(
+				`Hi Mensah,\n\n${message}\n\n— ${name}\nReply to: ${email}`
+			);
+			window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`;
+			toast.success('Opening your email app…', {
+				description: "If nothing opens, use the Email button on the left.",
+			});
+			setFormValues({ name: '', email: '', subject: '', message: '' });
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const contactCardVariants = {
@@ -163,13 +209,37 @@ export function Contact() {
 
 						<div className="contact-actions" aria-label="Quick contact actions">
 							<Button asChild className="btn btn-primary">
-								<a href="mailto:mensahanni98@gmail.com">Email me</a>
+								<a href={`mailto:${CONTACT_EMAIL}`}>Email me</a>
 							</Button>
 							<Button asChild variant="outline" className="btn btn-outline">
-								<a href="tel:+233206837999">Call</a>
+								<a href={`tel:${CONTACT_PHONE_TEL}`}>Call</a>
+							</Button>
+							<Button
+								type="button"
+								variant="outline"
+								className="btn btn-outline"
+								onClick={copyEmail}
+							>
+								<Copy className="icon-inline" />
+								<span>Copy email</span>
 							</Button>
 						</div>
 						<p className="contact-note">Typical reply time: within 24–48 hours.</p>
+
+						<Card className="contact-card contact-help-card">
+							<div className="contact-subsection">
+								<h3 className="contact-section-title">What I can help with</h3>
+								<p className="contact-subtitle">
+									Web apps, APIs, UI polish, performance fixes, and deployments.
+								</p>
+							</div>
+							<ul className="contact-help-list" aria-label="Services">
+								<li className="contact-help-item">React / Next.js features</li>
+								<li className="contact-help-item">Node.js / Express APIs</li>
+								<li className="contact-help-item">Bug fixes & performance</li>
+								<li className="contact-help-item">Deployments (Vercel)</li>
+							</ul>
+						</Card>
 
 						<div className="contact-info-list">
 							{contactInfo.map((info, index) => (
@@ -380,8 +450,9 @@ export function Contact() {
 									<Button
 										type="submit"
 										className="btn btn-primary btn-block"
+										disabled={isSubmitting}
 									>
-										Send Message
+										{isSubmitting ? 'Preparing email…' : 'Send Message'}
 									</Button>
 								</motion.div>
 							</form>

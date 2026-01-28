@@ -3,11 +3,12 @@ import { Github, Linkedin, Mail, ArrowDown, Download } from 'lucide-react';
 import { Button } from './ui/button';
 import { useEffect, useState } from 'react';
 
+
 import avatarSrc from '../image.png';
 
 const AVATAR_ALT = 'Portrait photo of Mensah Anni';
-const CV_HREF = '../assets/Mensah Kwame Anni_CV.pdf';
-const CV_DOWNLOAD_NAME = 'Mensah-Anni_CV.pdf';
+const CV_HREF = '/cv.pdf';
+const CV_DOWNLOAD_NAME = 'Mensah-Kwame-Anni-CV.pdf';
 
 export function Hero() {
   const [text, setText] = useState('');

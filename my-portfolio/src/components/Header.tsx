@@ -75,7 +75,7 @@ export function Header() {
 							variant="outline"
 							className="hidden md:inline-flex"
 						>
-							<a href="assets/Mensah-Anni_CV.pdf" download="Mensah-Anni-CV.pdf">
+							<a href="/cv.pdf" download="Mensah-Kwame-Anni-CV.pdf">
 								Download CV
 							</a>
 						</Button>

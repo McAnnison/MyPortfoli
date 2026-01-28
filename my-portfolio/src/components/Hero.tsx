@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import avatarSrc from '../image.png';
 
 const AVATAR_ALT = 'Portrait photo of Mensah Anni';
-const CV_HREF = '/cv.pdf';
-const CV_DOWNLOAD_NAME = 'Mensah-Anni-CV.pdf';
+const CV_HREF = 'assets/Mensah-Anni_CV.pdf';
+const CV_DOWNLOAD_NAME = 'Mensah-Anni_CV.pdf';
 
 export function Hero() {
   const [text, setText] = useState('');
@@ -190,13 +190,6 @@ export function Hero() {
           </Button>
           <Button variant="outline" size="lg" className="btn btn-outline" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Contact Me
-          </Button>
-
-          <Button asChild variant="outline" size="lg" className="btn btn-outline">
-            <a href={CV_HREF} download={CV_DOWNLOAD_NAME} aria-label="Download CV">
-              <Download />
-              <span>CV</span>
-            </a>
           </Button>
         </motion.div>
 

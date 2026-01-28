@@ -13,7 +13,7 @@ const features = [
 		icon: Database,
 		title: 'Backend Development',
 		description:
-			'Proficient in Node.js, Express, and database management with SQL and NoSQL.',
+			'Proficient in Node.js, Express, and database management with SQL.',
 	},
 	{
 		icon: Globe,

@@ -44,7 +44,7 @@ const projects = [
 		description:
 			'A registration platform for models and clients to connect, showcasing portfolios and facilitating bookings for modeling assignments.',
 		image: rolexImage,
-		tags: ['Figma', 'React Native', 'Expo', 'Node', 'Express', 'PostgreSQL'],
+		tags: ['Figma', 'React','Node', 'Express', 'MySQL'],
 		github: 'https://github.com/McAnnison/ground_up-tech',
 		demo: 'https://mcannison.github.io/ground_up-tech/',
 	}

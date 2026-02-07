@@ -28,7 +28,7 @@ const projects = [
 		image: costCalculatorImage,
 		tags: ['Next.js', 'TypeScript', 'Node.js', 'Express', 'CSS Modules'],
 		github: 'https://github.com/McAnnison/cost-check',
-		demo: 'https://cost-check-xi.vercel.app/',
+		demo: 'https://clening-cost-calculator.vercel.app/',
 	},
 	{
 		title: 'Artisan Finder App',

@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from './ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from './ui/sheet';
+import { ScrollProgress } from './scroll-progress';
+import { useActiveSection } from '../hooks/use-active-section';
+import { cn } from './ui/utils';
 
 type NavItem = {
 	id: string;
@@ -20,6 +24,10 @@ export function Header() {
 		[]
 	);
 
+	const activeSection = useActiveSection(
+		useMemo(() => navItems.map((item) => item.id), [navItems])
+	);
+
 	const scrollToId = useCallback((id: string) => {
 		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 		setMobileOpen(false);
@@ -35,6 +43,7 @@ export function Header() {
 
 	return (
 		<header className="site-header" aria-label="Site header">
+			<ScrollProgress />
 			<a className="skip-link" href="#main">
 				Skip to content
 			</a>
@@ -58,7 +67,10 @@ export function Header() {
 							<a
 								key={item.id}
 								href={`#${item.id}`}
-								className="header-link"
+								className={cn(
+									'header-link',
+									activeSection === item.id && 'header-link-active'
+								)}
 								onClick={(e) => {
 									e.preventDefault();
 									scrollToId(item.id);
@@ -85,35 +97,44 @@ export function Header() {
 							</a>
 						</Button>
 
-						<button
-							type="button"
-							className="header-mobile-toggle"
-							aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-							aria-expanded={mobileOpen}
-							onClick={() => setMobileOpen((v) => !v)}
-						>
-							{mobileOpen ? <X /> : <Menu />}
-						</button>
+						<Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+							<SheetTrigger asChild>
+								<button
+									type="button"
+									className="header-mobile-toggle"
+									aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+									aria-expanded={mobileOpen}
+								>
+									<Menu />
+								</button>
+							</SheetTrigger>
+							<SheetContent side="right" className="mobile-sheet">
+								<SheetHeader>
+									<SheetTitle className="mobile-sheet-title">Navigation</SheetTitle>
+								</SheetHeader>
+								<nav className="mt-4 flex flex-col gap-2" aria-label="Mobile">
+									{navItems.map((item) => (
+										<SheetClose key={item.id} asChild>
+											<a
+												href={`#${item.id}`}
+												className={cn(
+													'mobile-link',
+													activeSection === item.id && 'header-link-active'
+												)}
+												onClick={(e) => {
+													e.preventDefault();
+													scrollToId(item.id);
+												}}
+											>
+												{item.label}
+											</a>
+										</SheetClose>
+									))}
+								</nav>
+							</SheetContent>
+						</Sheet>
 					</div>
 				</div>
-
-				{mobileOpen ? (
-					<nav className="mobile-menu" aria-label="Mobile">
-						{navItems.map((item) => (
-							<a
-								key={item.id}
-								href={`#${item.id}`}
-								className="mobile-link"
-								onClick={(e) => {
-									e.preventDefault();
-									scrollToId(item.id);
-								}}
-							>
-								{item.label}
-							</a>
-						))}
-					</nav>
-				) : null}
 			</div>
 		</header>
 	);

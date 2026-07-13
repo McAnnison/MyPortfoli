@@ -5,6 +5,7 @@ import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { BackToTop } from './components/back-to-top';
 import { Toaster } from './components/ui/sonner';
 import { motion, useReducedMotion } from 'framer-motion';
 
@@ -29,6 +30,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <BackToTop />
       <Toaster />
     </motion.div>
   );

@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Badge } from './ui/badge';
+import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
+import { SectionReveal } from './section-reveal';
 
 const skillCategories = [
 	{
@@ -36,49 +39,53 @@ const skillCategories = [
 	},
 ];
 
-export function Skills() {
-	const categoryVariants = {
-		hidden: { opacity: 0, x: -30 },
-		visible: (i: number) => ({
-			opacity: 1,
-			x: 0,
-			transition: {
-				delay: i * 0.15,
-				duration: 0.5,
-				ease: [0.43, 0.13, 0.23, 0.96] as const,
-			},
-		}),
-	};
-
-	const skillVariants = {
-		hidden: { opacity: 0, scale: 0.8, y: 20 },
-		visible: (i: number) => ({
-			opacity: 1,
-			scale: 1,
-			y: 0,
-			transition: {
-				delay: i * 0.05,
-				duration: 0.4,
-				ease: [0.43, 0.13, 0.23, 0.96] as const,
-			},
-		}),
-		hover: {
-			scale: 1.06,
-			y: -6,
-			transition: { duration: 0.18 },
+const categoryVariants = {
+	hidden: { opacity: 0, x: -30 },
+	visible: (i: number) => ({
+		opacity: 1,
+		x: 0,
+		transition: {
+			delay: i * 0.15,
+			duration: 0.5,
+			ease: [0.43, 0.13, 0.23, 0.96] as const,
 		},
-	};
+	}),
+};
+
+const skillVariants = {
+	hidden: { opacity: 0, scale: 0.8, y: 20 },
+	visible: (i: number) => ({
+		opacity: 1,
+		scale: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.05,
+			duration: 0.4,
+			ease: [0.43, 0.13, 0.23, 0.96] as const,
+		},
+	}),
+	hover: {
+		scale: 1.06,
+		y: -6,
+		transition: { duration: 0.18 },
+	},
+};
+
+const categories = ['All', ...skillCategories.map((c) => c.category)];
+
+export function Skills() {
+	const [activeTab, setActiveTab] = useState('All');
+	const reduced = useReducedMotion();
+
+	const filtered =
+		activeTab === 'All'
+			? skillCategories
+			: skillCategories.filter((c) => c.category === activeTab);
 
 	return (
 		<section className="skills-section" id="skills">
 			<div className="skills-container">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, margin: '-100px' }}
-					transition={{ duration: 0.6 }}
-					className="skills-header"
-				>
+				<SectionReveal className="skills-header">
 					<motion.h2
 						className="skills-title"
 						initial={{ opacity: 0, scale: 0.96 }}
@@ -98,52 +105,75 @@ export function Skills() {
 					>
 						A comprehensive toolkit for building modern web applications
 					</motion.p>
-				</motion.div>
+				</SectionReveal>
 
-				<div className="skills-grid" role="list">
-					{skillCategories.map((category, categoryIndex) => (
-						<motion.div
-							key={categoryIndex}
-							custom={categoryIndex}
-							initial="hidden"
-							whileInView="visible"
-							viewport={{ once: true, margin: '-50px' }}
-							variants={categoryVariants}
-							className="skills-category"
-							role="listitem"
-						>
-							<motion.h3
-								className="skills-category-title"
-								initial={{ opacity: 0, x: -20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: categoryIndex * 0.15 + 0.1 }}
-							>
-								{category.category}
-							</motion.h3>
-
-							<div
-								className="skills-badges"
-								aria-hidden={false}
-							>
-								{category.skills.map((skill, skillIndex) => (
-									<motion.div
-										key={skillIndex}
-										custom={skillIndex}
-										initial="hidden"
-										whileInView="visible"
-										whileHover="hover"
-										viewport={{ once: true, margin: '-50px' }}
-										variants={skillVariants}
-										className="skill-badge-wrap"
-									>
-										<Badge className="skill-badge">{skill}</Badge>
-									</motion.div>
-								))}
-							</div>
-						</motion.div>
-					))}
+				<div className="flex justify-center">
+					<Tabs value={activeTab} onValueChange={setActiveTab}>
+						<TabsList className="skills-tabs-list">
+							{categories.map((category) => (
+								<TabsTrigger
+									key={category}
+									value={category}
+									className="skills-tabs-trigger"
+								>
+									{category}
+								</TabsTrigger>
+							))}
+						</TabsList>
+					</Tabs>
 				</div>
+
+				<AnimatePresence mode="wait">
+					<motion.div
+						key={activeTab}
+						className="skills-grid"
+						role="list"
+						initial={reduced ? { opacity: 1 } : { opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={reduced ? { opacity: 0 } : { opacity: 0, y: -10 }}
+						transition={{ duration: 0.25 }}
+					>
+						{filtered.map((category, categoryIndex) => (
+							<motion.div
+								key={category.category}
+								custom={categoryIndex}
+								initial="hidden"
+								whileInView="visible"
+								viewport={{ once: true, margin: '-50px' }}
+								variants={categoryVariants}
+								className="skills-category"
+								role="listitem"
+							>
+								<motion.h3
+									className="skills-category-title"
+									initial={{ opacity: 0, x: -20 }}
+									whileInView={{ opacity: 1, x: 0 }}
+									viewport={{ once: true }}
+									transition={{ delay: categoryIndex * 0.15 + 0.1 }}
+								>
+									{category.category}
+								</motion.h3>
+
+								<div className="skills-badges" aria-hidden={false}>
+									{category.skills.map((skill, skillIndex) => (
+										<motion.div
+											key={skill}
+											custom={skillIndex}
+											initial="hidden"
+											whileInView="visible"
+											whileHover="hover"
+											viewport={{ once: true, margin: '-50px' }}
+											variants={skillVariants}
+											className="skill-badge-wrap"
+										>
+											<Badge className="skill-badge">{skill}</Badge>
+										</motion.div>
+									))}
+								</div>
+							</motion.div>
+						))}
+					</motion.div>
+				</AnimatePresence>
 			</div>
 		</section>
 	);

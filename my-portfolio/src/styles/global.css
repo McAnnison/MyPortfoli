@@ -1,7 +1,48 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /* Import a clean UI font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -26,7 +67,7 @@ body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvet
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.08);
-  --input: transparent;
+  --input: rgba(0, 0, 0, 0.08);
   --input-background: #f9f9f9;
   --switch-background: #e0e0e0;
   --font-weight-medium: 500;
@@ -1074,6 +1115,182 @@ section[id] { scroll-margin-top: 96px; }
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Icon sizing inside buttons */
+.icon-inline {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}
+
+/* Header scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0066ff, #00d4ff, #a78bfa);
+  z-index: 100;
+  transform-origin: 0%;
+  pointer-events: none;
+}
+
+/* Active header link */
+.header-link-active {
+  background: rgba(0, 102, 255, 0.1) !important;
+  border-color: rgba(0, 102, 255, 0.25) !important;
+  color: #0066ff !important;
+}
+
+/* Mobile sheet nav */
+.mobile-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+
+.mobile-sheet-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #0066ff, #00d4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+}
+
+/* Footer layout */
+.footer-inner { padding: 0 1.5rem; }
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #999999;
+}
+
+.footer-copy { font-size: 0.9rem; }
+
+.icon-heart {
+  width: 14px;
+  height: 14px;
+  color: #ff6b6b;
+  fill: #ff6b6b;
+}
+
+.footer-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-socials .social-link {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(0, 102, 255, 0.08);
+  border: 1px solid rgba(0, 102, 255, 0.15);
+  color: #0066ff;
+  transition: background 200ms ease, transform 200ms ease, color 200ms ease;
+}
+
+.footer-socials .social-link:hover {
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 212, 255, 0.1));
+  color: #0052cc;
+  transform: translateY(-3px);
+}
+
+.footer-socials .social-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Avatar */
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Hero badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 102, 255, 0.08);
+  color: #0066ff;
+  border: 1px solid rgba(0, 102, 255, 0.15);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Skills tabs */
+.skills-tabs-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #f0f0f0;
+  padding: 0.4rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+.skills-tabs-trigger {
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.skills-tabs-trigger[data-state="active"] {
+  background: #ffffff;
+  color: #0066ff;
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.1);
+}
+
+/* Dialog project */
+.dialog-project {
+  max-width: 600px;
+}
+
+.dialog-project-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.dialog-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
@@ -1090,4 +1307,5 @@ section[id] { scroll-margin-top: 96px; }
   .project-body { min-height: 0; }
   .project-media { height: 140px; }
   .hero-title { font-size: 2rem; }
+  .back-to-top { bottom: 1rem; right: 1rem; }
 }

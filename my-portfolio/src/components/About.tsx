@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Zap } from 'lucide-react';
 import { Card } from '../components/ui/card';
+import { SectionReveal } from './section-reveal';
 
 const features = [
 	{
@@ -64,13 +65,7 @@ export function About() {
 	return (
 		<section className="about-section" id="about">
 			<div className="container">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, margin: '-100px' }}
-					transition={{ duration: 0.6 }}
-					className="about-header"
-				>
+				<SectionReveal className="about-header">
 					<motion.h2
 						className="about-title"
 						initial={{ opacity: 0, scale: 0.9 }}
@@ -91,7 +86,7 @@ export function About() {
 						building web applications. I love turning complex problems into
 						simple, beautiful, and intuitive solutions.
 					</motion.p>
-				</motion.div>
+				</SectionReveal>
 
 				<div className="features-grid" role="list">
 					{features.map((feature, index) => (
